@@ -7,8 +7,9 @@ import java.util.stream.IntStream;
 public class JavaLambdaExpressionTutorial {
 
 	/**
-	 * a non functional method to count the number of "1" in an array. reason of non
-	 * functionality is changing the status of the local variable numberOfOne
+	 * non functional programming to count the number of "n" in an array. reason of
+	 * the non functionality is for example changing the status of the local
+	 * variable "count"
 	 * 
 	 * @param arr
 	 * @return
@@ -25,58 +26,61 @@ public class JavaLambdaExpressionTutorial {
 	}
 
 	/**
-	 * a functional method to count the number of any entry in an array. reasons of
-	 * functionality: 1-not changing any status of any variables 2-getting a
-	 * reference on a functionality as a parameter "pred"
+	 * a method to count the number of any entry in an array. the entries are being
+	 * determined by the function given as a parameter
 	 * 
 	 * @param arr
-	 * @param pred
-	 * @return count() returns long only
+	 * @param pred: a function
+	 * @return count()
 	 */
-	public long countFunctionally(int[] arr, IntPredicate pred) {
+	public long countFunctionally(int[] arr, IntPredicate predFunction) {
 		IntStream str = Arrays.stream(arr);
-		return str.filter(pred).count();
+		return str.filter(predFunction).count();
 
 	}
 
 	/**
-	 * a functional method to calculate the sum
+	 * a method to calculate the sum of certain entries in an array. the entries are
+	 * being determined by the function given as a parameter
 	 * 
 	 * @param arr
-	 * @param pred
+	 * @param pred: a function to
 	 * @return
 	 */
-	public int sumFunctionally(int[] arr, IntPredicate pred) {
+	public int sumFunctionally(int[] arr, IntPredicate predFunction) {
 		IntStream str = Arrays.stream(arr);
-		return str.filter(pred).sum();
+		return str.filter(predFunction).sum();
 
 	}
 
 	public static void main(String[] args) {
 
-		// implementing functional interfaces by using lambda expressions
+		// implementing functional interfaces by using lambda expressions. these functions can be 
+		//given as parameter to different methods
+		
 		IntPredicate trueWhenOne = (i) -> i == 1;
 		IntPredicate trueWhenZero = (i) -> i == 0;
 
+		//an array to test the functions on
 		int[] numbersArray = new int[] { 1, 1, 0, 0, 0, 3, 3 };
 
 		JavaLambdaExpressionTutorial tutorial = new JavaLambdaExpressionTutorial();
 
-		System.out.print("counting \"" + 1 + "\" with a non functional method results "
+		System.out.print("counting \"" + 1 + "\" non functionally resulted "
 				+ tutorial.countNonFunctionally(numbersArray, 1) + "\n");
 
 		// giving the functionality as a parameter
-		System.out.print("counting \"" + 1 + "\" with a functional method results "
+		System.out.print("counting \"" + 1 + "\" functionally resulted "
 				+ tutorial.countFunctionally(numbersArray, trueWhenOne) + "\n");
 
-		// an advantage of functionality is using the functionality in another methods
+		// an advantage of functional programming is using the functionality in another methods
 		System.out.print("the sum of \"" + 1 + "\" entries in the array is "
 				+ tutorial.sumFunctionally(numbersArray, trueWhenOne) + "\n");
 
 		// counting the "0" in the functional Method needs only to change the
 		// functionality.
 
-		System.out.print("counting \"" + 0 + "\" with a functional method results "
+		System.out.print("counting \"" + 0 + "\" functionally method resulted "
 				+ tutorial.countFunctionally(numbersArray, trueWhenZero) + "\n");
 
 	}
