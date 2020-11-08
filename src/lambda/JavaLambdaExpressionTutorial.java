@@ -4,6 +4,11 @@ import java.util.Arrays;
 import java.util.function.IntPredicate;
 import java.util.stream.IntStream;
 
+/**
+ * a class to explain the functional programming in java using lambda expressions
+ * @author aboud
+ *
+ */
 public class JavaLambdaExpressionTutorial {
 
 	/**
@@ -44,7 +49,7 @@ public class JavaLambdaExpressionTutorial {
 	 * being determined by the function given as a parameter
 	 * 
 	 * @param arr
-	 * @param pred: a function to
+	 * @param pred: a function
 	 * @return
 	 */
 	public int sumFunctionally(int[] arr, IntPredicate predFunction) {
